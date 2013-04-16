@@ -12,15 +12,15 @@
 #  |->sqlmap
 
 if [ ! -d "/pentest" ]; then
-	mkdir "/pentest"
-	mkdir "/pentest/exploits"
-	mkdir "/pentest/exploits/exploitdb"
-	mkdir "/pentest/exploits/exploitdb/platforms"
-	mkdir "/pentest/exploits/set"
-	mkdir "/pentest/web"
-	mkdir "/pentest/web/nikto"
-	mkdir "/pentest/database"
-	mkdir "/pentest/database/sqlmap"
+    mkdir "/pentest"
+    mkdir "/pentest/exploits"
+    mkdir "/pentest/exploits/exploitdb"
+    mkdir "/pentest/exploits/exploitdb/platforms"
+    mkdir "/pentest/exploits/set"
+    mkdir "/pentest/web"
+    mkdir "/pentest/web/nikto"
+    mkdir "/pentest/database"
+    mkdir "/pentest/database/sqlmap"
 fi
 
 #Update
@@ -40,8 +40,7 @@ echo "${txtbld}$(tput setaf 4)[>] Exploit-db updated successfully!$(tput sgr0)\n
 
 echo "${txtbld}$(tput setaf 1)[-] Updating SET, please wait...$(tput sgr0)"
 if [ ! -f "/pentest/exploits/set/set-update" ]; then
-	cd /pentest/exploits/set
-	svn co http://svn.secmaniac.com/social_engineering_toolkit set/
+	svn co http://svn.secmaniac.com/social_engineering_toolkit /pentest/exploits/set
 fi
 /pentest/exploits/set/set-update
 wait
@@ -49,8 +48,7 @@ echo "${txtbld}$(tput setaf 4)[>] SET updated successfully!$(tput sgr0)\n"
 
 echo "${txtbld}$(tput setaf 1)[-] Updating msf, please wait...$(tput sgr0)"
 if [ ! -f "/pentest/exploits/msf/msfupdate" ]; then
-	cd /pentest/exploits/
-	svn co https://www.metasploit.com/svn/framework3/trunk/ msf
+	svn co https://www.metasploit.com/svn/framework3/trunk/ /pentest/exploits/msf
 fi
 /pentest/exploits/msf/msfupdate
 wait
