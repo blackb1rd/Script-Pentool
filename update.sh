@@ -11,16 +11,17 @@
 # |->databse
 #  |->sqlmap
 
-if [ ! -d "/pentest" ]; then
+if [ ! -d '/pentest' ]; then 
     mkdir "/pentest"
-    mkdir "/pentest/exploits"
-    mkdir "/pentest/exploits/exploitdb"
-    mkdir "/pentest/exploits/exploitdb/platforms"
-    mkdir "/pentest/exploits/set"
-    mkdir "/pentest/web"
-    mkdir "/pentest/web/nikto"
-    mkdir "/pentest/database"
-    mkdir "/pentest/database/sqlmap"
+    mkdir "/pentest/exploits" 
+    mkdir "/pentest/exploits/exploitdb" 
+    mkdir "/pentest/exploits/exploitdb/platforms" 
+    mkdir "/pentest/exploits/set" 
+    mkdir "/pentest/web" 
+    mkdir "/pentest/web/nikto" 
+    mkdir "/pentest/web/w3af" 
+    mkdir "/pentest/database" 
+    mkdir "/pentest/database/sqlmap" 
 fi
 
 #Update exploit-db
@@ -28,13 +29,13 @@ echo "${txtbld}$(tput setaf 1)[-] Updating Exploit-db, please wait...$(tput sgr0
 exploit=$(svn co svn://www.exploit-db.com/exploitdb exploitdb)
 wait
 if [ -z "$exploit" ]; then 
-echo "${txtbld}$(tput setaf 1)[!]Exploit-DB's SVN didn't work. Updating manually. Please wait...\n"
-wget http://www.exploit-db.com/archive.tar.bz2
-wait
-tar xvfj archive.tar.bz2 > /dev/null
-rm -rf /pentest/exploits/exploitdb/platforms
-mv -f platforms files.csv /pentest/exploits/exploitdb
-rm -rf archive.tar.bz2*
+    echo "${txtbld}$(tput setaf 1)[!]Exploit-DB's SVN didn't work. Updating manually. Please wait...\n"
+    wget http://www.exploit-db.com/archive.tar.bz2
+    wait
+    tar xvfj archive.tar.bz2 > /dev/null
+    rm -rf /pentest/exploits/exploitdb/platforms
+    mv -f platforms files.csv /pentest/exploits/exploitdb
+    rm -rf archive.tar.bz2*
 fi
 echo "${txtbld}$(tput setaf 4)[>] Exploit-db updated successfully!$(tput sgr0)\n"
 
@@ -42,9 +43,9 @@ echo "${txtbld}$(tput setaf 4)[>] Exploit-db updated successfully!$(tput sgr0)\n
 #Update SET
 echo "${txtbld}$(tput setaf 1)[-] Updating SET, please wait...$(tput sgr0)"
 if [ ! -f "/pentest/exploits/set/set-update" ]; then
-    svn co http://svn.secmaniac.com/social_engineering_toolkit /pentest/exploits/set
+    git clone https://github.com/trustedsec/social-engineer-toolkit.git /pentest/exploits/set
 else
-    /pentest/exploits/set/set-update
+    cd /pentest/exploits/set && git pull
 fi
 wait
 echo "${txtbld}$(tput setaf 4)[>] SET updated successfully!$(tput sgr0)\n"
@@ -70,6 +71,17 @@ fi
 
 wait
 echo "${txtbld}$(tput setaf 4)[>] Nikto updated successfully!$(tput sgr0)\n"
+
+#Update w3af
+echo "${txtbld}$(tput setaf 1)[-] Updating w3af, please wait...$(tput sgr0)"
+if [ ! -f "/pentest/web/w3af/w3af_gui" ]; then
+    rm -r "/pentest/web/w3af"
+    git clone https://github.com/andresriancho/w3af.git /pentest/web/w3af
+else
+    cd /pentest/web/w3af && git pull
+fi
+wait
+echo -e "${txtbld}$(tput setaf 4)[>] w3af updated successfully!$(tput sgr0)\n"
 
 #Update SQLMap
 echo "${txtbld}$(tput setaf 1)[-] Updating SQLMap, please wait...$(tput sgr0)"
