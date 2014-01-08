@@ -26,17 +26,12 @@ fi
 
 #Update exploit-db
 echo "${txtbld}$(tput setaf 1)[-] Updating Exploit-db, please wait...$(tput sgr0)"
-exploit=$(svn co svn://www.exploit-db.com/exploitdb exploitdb)
-wait
-if [ -z "$exploit" ]; then 
-    echo "${txtbld}$(tput setaf 1)[!]Exploit-DB's SVN didn't work. Updating manually. Please wait...\n"
-    wget http://www.exploit-db.com/archive.tar.bz2
-    wait
-    tar xvfj archive.tar.bz2 > /dev/null
-    rm -rf /pentest/exploits/exploitdb/platforms
-    mv -f platforms files.csv /pentest/exploits/exploitdb
-    rm -rf archive.tar.bz2*
+if [ ! -f "/pentest/exploits/exploitdb" ]; then
+    git clone https://github.com/offensive-security/exploit-database /pentest/exploits/exploitdb
+else
+    cd /pentest/exploits/exploitdb && git pull
 fi
+wait
 echo "${txtbld}$(tput setaf 4)[>] Exploit-db updated successfully!$(tput sgr0)\n"
 
 
