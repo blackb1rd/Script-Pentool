@@ -1,15 +1,12 @@
 #! /bin/bash
 
-#Check directory
-# ->/pentest
-# |->exploits
-#  |->exploitdb
-#  |->set
-#  |->msf
-# |->web
-#  |->nikto
-# |->databse
-#  |->sqlmap
+# Directory hierarchy
+# /pentest┬>exploits┬>exploitdb
+#         │         ├>set
+#         │         └>msf
+#         ├>web─────┬>nikto
+#         │         └>w3af
+#         └>database─>sqlmap
 
 if [ ! -d '/pentest' ]; then 
     mkdir "/pentest"
@@ -76,7 +73,7 @@ else
     cd /pentest/web/w3af && git pull
 fi
 wait
-echo -e "${txtbld}$(tput setaf 4)[>] w3af updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] w3af updated successfully!$(tput sgr0)\n"
 
 #Update SQLMap
 echo "${txtbld}$(tput setaf 1)[-] Updating SQLMap, please wait...$(tput sgr0)"
@@ -86,4 +83,4 @@ else
     cd /pentest/database/sqlmap && git pull
 fi
 wait
-echo -e "${txtbld}$(tput setaf 4)[>] SQLMap updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] SQLMap updated successfully!$(tput sgr0)\n"
