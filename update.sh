@@ -45,9 +45,9 @@ echo "${txtbld}$(tput setaf 4)[>] SET updated successfully!$(tput sgr0)\n"
 #Update msf
 echo "${txtbld}$(tput setaf 1)[-] Updating msf, please wait...$(tput sgr0)"
 if [ ! -f "/pentest/exploits/msf/msfupdate" ]; then
-    svn co https://www.metasploit.com/svn/framework3/trunk/ /pentest/exploits/msf
+    git clone https://github.com/rapid7/metasploit-framework.git /pentest/exploits/msf
 else
-    /pentest/exploits/msf/msfupdate
+    cd /pentest/exploits/msf &&git pull
 fi
 wait
 echo "${txtbld}$(tput setaf 4)[>] msf updated successfully!$(tput sgr0)\n"
