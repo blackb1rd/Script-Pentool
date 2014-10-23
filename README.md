@@ -1,6 +1,6 @@
-Script pentest tool
+Details
 ==
-Script pentest tool for ubuntu 12.04.2 LTS
+Script pentest tool is script for donwloading pentest tool using in GNU/Linux.
 
 Usage
 ---
@@ -8,4 +8,4 @@ Usage
 
 status
 ---
-Wait for more update.
+Create menu bar for Ubuntu in progress.
