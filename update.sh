@@ -8,17 +8,35 @@
 #         │         └>w3af
 #         └>database─>sqlmap
 
-if [ ! -d '/pentest' ]; then 
-    mkdir "/pentest"
-    mkdir "/pentest/exploits" 
-    mkdir "/pentest/exploits/exploitdb" 
-    mkdir "/pentest/exploits/exploitdb/platforms" 
-    mkdir "/pentest/exploits/set" 
-    mkdir "/pentest/web" 
-    mkdir "/pentest/web/nikto" 
-    mkdir "/pentest/web/w3af" 
-    mkdir "/pentest/database" 
-    mkdir "/pentest/database/sqlmap" 
+if [ ! -d "/pentest" ]; then
+	mkdir "/pentest"
+fi
+if [ ! -d "/pentest/exploits" ]; then
+	mkdir "/pentest/exploits"
+fi
+if [ ! -d "/pentest/exploits/exploitdb" ]; then
+	mkdir "/pentest/exploits/exploitdb"
+fi
+if [ ! -d "/pentest/exploits/exploitdb/platforms" ]; then
+	mkdir "/pentest/exploits/exploitdb/platforms"
+fi
+if [ ! -d "/pentest/exploits/set" ]; then
+	mkdir "/pentest/exploits/set"
+fi
+if [ ! -d "/pentest/web" ]; then
+	mkdir "/pentest/web"
+fi
+if [ ! -d "/pentest/web/nikto" ]; then
+	mkdir "/pentest/web/nikto"
+fi
+if [ ! -d "/pentest/web/w3af" ]; then
+	mkdir "/pentest/web/w3af"
+fi
+if [ ! -d "/pentest/database" ]; then
+	mkdir "/pentest/database"
+fi
+if [ ! -d "/pentest/database/sqlmap" ]; then
+	mkdir "/pentest/database/sqlmap"
 fi
 
 #Update exploit-db
@@ -47,7 +65,7 @@ echo "${txtbld}$(tput setaf 1)[-] Updating msf, please wait...$(tput sgr0)"
 if [ ! -f "/pentest/exploits/msf/msfupdate" ]; then
     git clone https://github.com/rapid7/metasploit-framework.git /pentest/exploits/msf
 else
-    cd /pentest/exploits/msf &&git pull
+    cd /pentest/exploits/msf && git pull
 fi
 wait
 echo "${txtbld}$(tput setaf 4)[>] msf updated successfully!$(tput sgr0)\n"
