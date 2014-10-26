@@ -1,12 +1,13 @@
 #! /bin/bash
 
 # Directory hierarchy
-# /pentest┬>exploits┬>exploitdb
-#         │         ├>set
-#         │         └>msf
-#         ├>web─────┬>nikto
-#         │         └>w3af
-#         └>database─>sqlmap
+# /pentest┬>exploits──┬>exploitdb
+#         │           ├>set
+#         │           └>msf
+#         ├>database───>sqlmap
+#         ├>tutorial───>pwnwiki
+#         └>web───────┬>nikto
+#                     └>w3af
 
 if [ ! -d "/pentest" ]; then
 	mkdir "/pentest"
@@ -23,6 +24,18 @@ fi
 if [ ! -d "/pentest/exploits/set" ]; then
 	mkdir "/pentest/exploits/set"
 fi
+if [ ! -d "/pentest/database" ]; then
+	mkdir "/pentest/database"
+fi
+if [ ! -d "/pentest/database/sqlmap" ]; then
+	mkdir "/pentest/database/sqlmap"
+fi
+if [ ! -d "/pentest/tutorial" ]; then
+	mkdir "/pentest/tutorial"
+fi
+if [ ! -d "/pentest/pwnwiki" ]; then
+	mkdir "/pentest/pwnwiki"
+fi
 if [ ! -d "/pentest/web" ]; then
 	mkdir "/pentest/web"
 fi
@@ -31,12 +44,6 @@ if [ ! -d "/pentest/web/nikto" ]; then
 fi
 if [ ! -d "/pentest/web/w3af" ]; then
 	mkdir "/pentest/web/w3af"
-fi
-if [ ! -d "/pentest/database" ]; then
-	mkdir "/pentest/database"
-fi
-if [ ! -d "/pentest/database/sqlmap" ]; then
-	mkdir "/pentest/database/sqlmap"
 fi
 
 #Update exploit-db
@@ -70,6 +77,26 @@ fi
 wait
 echo "${txtbld}$(tput setaf 4)[>] msf updated successfully!$(tput sgr0)\n"
 
+#Update SQLMap
+echo "${txtbld}$(tput setaf 1)[-] Updating SQLMap, please wait...$(tput sgr0)"
+if [ ! -f "/pentest/database/sqlmap/sqlmap.py" ]; then
+    git clone https://github.com/sqlmapproject/sqlmap.git /pentest/database/sqlmap
+else
+    cd /pentest/database/sqlmap && git pull
+fi
+wait
+echo "${txtbld}$(tput setaf 4)[>] SQLMap updated successfully!$(tput sgr0)\n"
+
+#Update pwnwiki
+echo "${txtbld}$(tput setaf 1)[-] Updating Pwnwiki, please wait...$(tput sgr0)"
+if [ ! -f "/pentest/tutorial/pwnwiki/index.html" ]; then
+    git clone https://github.com/pwnwiki/pwnwiki.github.io.git /pentest/tutorial/pwnwiki
+else
+    cd /pentest/tutorial/pwnwiki && git pull
+fi
+wait
+echo "${txtbld}$(tput setaf 4)[>] Pwnwiki updated successfully!$(tput sgr0)\n"
+
 #Update Nikto
 echo "${txtbld}$(tput setaf 1)[-] Updating Nikto, please wait...$(tput sgr0)"
 if [ ! -f "/pentest/web/nikto/README.md" ]; then
@@ -93,12 +120,3 @@ fi
 wait
 echo "${txtbld}$(tput setaf 4)[>] w3af updated successfully!$(tput sgr0)\n"
 
-#Update SQLMap
-echo "${txtbld}$(tput setaf 1)[-] Updating SQLMap, please wait...$(tput sgr0)"
-if [ ! -f "/pentest/database/sqlmap/sqlmap.py" ]; then
-    git clone https://github.com/sqlmapproject/sqlmap.git /pentest/database/sqlmap
-else
-    cd /pentest/database/sqlmap && git pull
-fi
-wait
-echo "${txtbld}$(tput setaf 4)[>] SQLMap updated successfully!$(tput sgr0)\n"
