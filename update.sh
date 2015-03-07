@@ -33,7 +33,7 @@ else
     cd /pentest/exploits/exploitdb && git pull
 fi
 wait
-echo "${txtbld}$(tput setaf 4)[>] Exploit-db updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] Exploit-db updated successfully!$(tput sgr0)"
 
 
 #Update SET
@@ -44,7 +44,7 @@ else
     cd /pentest/exploits/set && git pull
 fi
 wait
-echo "${txtbld}$(tput setaf 4)[>] SET updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] SET updated successfully!$(tput sgr0)"
 
 #Update msf
 echo "${txtbld}$(tput setaf 1)[-] Updating msf, please wait...$(tput sgr0)"
@@ -54,7 +54,7 @@ else
     cd /pentest/exploits/msf && git pull
 fi
 wait
-echo "${txtbld}$(tput setaf 4)[>] msf updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] msf updated successfully!$(tput sgr0)"
 
 #Update SQLMap
 echo "${txtbld}$(tput setaf 1)[-] Updating SQLMap, please wait...$(tput sgr0)"
@@ -64,7 +64,7 @@ else
     cd /pentest/database/sqlmap && git pull
 fi
 wait
-echo "${txtbld}$(tput setaf 4)[>] SQLMap updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] SQLMap updated successfully!$(tput shr0)"
 
 #Update pwnwiki
 echo "${txtbld}$(tput setaf 1)[-] Updating Pwnwiki, please wait...$(tput sgr0)"
@@ -74,7 +74,7 @@ else
     cd /pentest/tutorial/pwnwiki && git pull
 fi
 wait
-echo "${txtbld}$(tput setaf 4)[>] Pwnwiki updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] Pwnwiki updated successfully!$(tput sgr0)"
 
 #Update Nikto
 echo "${txtbld}$(tput setaf 1)[-] Updating Nikto, please wait...$(tput sgr0)"
@@ -85,7 +85,7 @@ else
 fi
 
 wait
-echo "${txtbld}$(tput setaf 4)[>] Nikto updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] Nikto updated successfully!$(tput sgr0)"
 
 #Update w3af
 echo "${txtbld}$(tput setaf 1)[-] Updating w3af, please wait...$(tput sgr0)"
@@ -95,5 +95,5 @@ else
     cd /pentest/web/w3af && git pull
 fi
 wait
-echo "${txtbld}$(tput setaf 4)[>] w3af updated successfully!$(tput sgr0)\n"
+echo "${txtbld}$(tput setaf 4)[>] w3af updated successfully!$(tput sgr0)"
 
