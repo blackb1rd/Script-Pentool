@@ -17,7 +17,7 @@ gitpull () {
 github () {
     echo "${txtbld}$(tput setaf 1)[-] Updating $3, please wait...$(tput sgr0)"
     if [ ! -d "$2" ]; then
-        git clone "https://github.com/$1.git" "$2"
+        git clone "git://github.com/$1" "$2"
     else
         gitpull $1
     fi
