@@ -20,7 +20,7 @@ github () {
     if [ ! -d "$2" ]; then
         git clone "git://github.com/$1" "$2"
     else
-        gitpull "$1"
+        gitpull "$2"
     fi
     wait
     echo "${txtbld}$(tput setaf 4)[>] $3 updated successfully!$(tput sgr0)"
