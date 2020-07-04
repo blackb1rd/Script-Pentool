@@ -49,4 +49,3 @@ github sqlmapproject/sqlmap /pentest/database/sqlmap SQLMap
 github pwnwiki/pwnwiki.github.io /pentest/tutorial/pwnwiki PwnWiki
 github sullo/nikto /pentest/web/nikto Nikto
 github andresriancho/w3af /pentest/web/w3af w3af
-github wpscanteam/wpscan /pentest/web/wpscan wpscan
