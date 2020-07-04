@@ -15,11 +15,12 @@ gitpull () {
 }
 
 github () {
+    txtbld=$(tput bold)
     echo "${txtbld}$(tput setaf 1)[-] Updating $3, please wait...$(tput sgr0)"
     if [ ! -d "$2" ]; then
         git clone "git://github.com/$1" "$2"
     else
-        gitpull $1
+        gitpull "$1"
     fi
     wait
     echo "${txtbld}$(tput setaf 4)[>] $3 updated successfully!$(tput sgr0)"
@@ -48,3 +49,4 @@ github sqlmapproject/sqlmap /pentest/database/sqlmap SQLMap
 github pwnwiki/pwnwiki.github.io /pentest/tutorial/pwnwiki PwnWiki
 github sullo/nikto /pentest/web/nikto Nikto
 github andresriancho/w3af /pentest/web/w3af w3af
+github wpscanteam/wpscan /pentest/web/wpscan wpscan
